@@ -121,7 +121,7 @@ export default function Offer({
               {/* MOCKUP DO KIT ESSENCIAL */}
               <div className="my-4 flex items-center justify-center">
                 <img 
-                  src="https://i.ibb.co/RknXwNjY/Chat-GPT-Image-30-de-set-de-2026-18-28-21.webp" 
+                  src="/__l5e/assets-v1/433b00f2-df5f-4f1a-91c3-37cf47dfae7a/mockup1.webp" 
                   alt="Mockup Kit Essencial - Bebê Comilão"
                   className="w-full max-w-[200px] sm:max-w-[230px] max-h-48 sm:max-h-52 object-contain rounded-xl drop-shadow-md mx-auto"
                   loading="lazy"
@@ -229,7 +229,7 @@ export default function Offer({
               {/* MOCKUP DO KIT COMPLETO */}
               <div className="my-4 flex items-center justify-center">
                 <img 
-                  src="https://i.ibb.co/sdhjZLrb/Chat-GPT-Image-30-de-set-de-2026-18-27-01.webp" 
+                  src="/__l5e/assets-v1/ef156190-e0d9-4504-9c7f-4d83cae8801c/mockup2.webp" 
                   alt="Mockup Kit Completo - Bebê Comilão"
                   className="w-full max-w-[200px] sm:max-w-[230px] max-h-48 sm:max-h-52 object-contain rounded-xl drop-shadow-md mx-auto"
                   loading="lazy"
