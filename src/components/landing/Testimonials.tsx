@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { useState, useEffect, useRef } from 'react';
+import { motion } from 'motion/react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface TestimonialsProps {
@@ -8,23 +8,53 @@ interface TestimonialsProps {
 
 export default function Testimonials({ images }: TestimonialsProps) {
   const [index, setIndex] = useState(0);
+  const [loadedImages, setLoadedImages] = useState<Set<number>>(() => new Set());
+  const pendingIndex = useRef<number | null>(null);
   const total = images.length;
+
+  const showImage = (nextIndex: number) => {
+    if (loadedImages.has(nextIndex)) {
+      pendingIndex.current = null;
+      setIndex(nextIndex);
+      return;
+    }
+
+    pendingIndex.current = nextIndex;
+  };
+
+  const handleImageLoad = (imageIndex: number) => {
+    setLoadedImages((current) => {
+      const next = new Set(current);
+      next.add(imageIndex);
+      return next;
+    });
+
+    if (pendingIndex.current === imageIndex) {
+      pendingIndex.current = null;
+      setIndex(imageIndex);
+    }
+  };
 
   // Autoplay a cada 3000ms com loop infinito
   useEffect(() => {
     if (total <= 1) return;
     const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % total);
+      setIndex((prev) => {
+        const next = (prev + 1) % total;
+        if (loadedImages.has(next)) return next;
+        pendingIndex.current = next;
+        return prev;
+      });
     }, 3000);
     return () => clearInterval(timer);
-  }, [total]);
+  }, [loadedImages, total]);
 
   const handlePrev = () => {
-    setIndex((prev) => (prev - 1 + total) % total);
+    showImage((index - 1 + total) % total);
   };
 
   const handleNext = () => {
-    setIndex((prev) => (prev + 1) % total);
+    showImage((index + 1) % total);
   };
 
   if (!images || images.length === 0) return null;
@@ -54,23 +84,21 @@ export default function Testimonials({ images }: TestimonialsProps) {
         {/* Container do Carrossel de Imagens Reais */}
         <div className="relative w-full max-w-sm sm:max-w-md mx-auto px-6 sm:px-8">
           <div className="overflow-hidden rounded-2xl shadow-lg border border-[#EFE5DC] bg-white p-2 sm:p-3">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.97 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.97 }}
-                transition={{ duration: 0.3 }}
-                className="w-full flex items-center justify-center min-h-[380px] sm:min-h-[440px]"
-              >
-                <img 
-                  src={images[index]}
-                  alt={`Depoimento real de mãe ${index + 1}`}
-                  className="w-full h-auto max-h-[500px] object-contain rounded-xl"
+            <div className="relative w-full h-[380px] sm:h-[440px] md:h-[500px]">
+              {images.map((image, imageIndex) => (
+                <img
+                  key={image}
+                  src={image}
+                  alt={`Depoimento real de mãe ${imageIndex + 1}`}
+                  className={`absolute inset-0 w-full h-full object-contain rounded-xl transition-opacity duration-300 ease-out ${
+                    index === imageIndex ? "opacity-100" : "opacity-0 pointer-events-none"
+                  }`}
                   loading="lazy"
+                  decoding="async"
+                  onLoad={() => handleImageLoad(imageIndex)}
                 />
-              </motion.div>
-            </AnimatePresence>
+              ))}
+            </div>
           </div>
 
           {/* Botões de Controle Manual (com posicionamento que evita quebra no mobile) */}
@@ -98,7 +126,7 @@ export default function Testimonials({ images }: TestimonialsProps) {
               <button
                 key={i}
                 type="button"
-                onClick={() => setIndex(i)}
+                onClick={() => showImage(i)}
                 aria-label={`Ir para depoimento ${i + 1}`}
                 className={`transition-all rounded-full ${
                   index === i 

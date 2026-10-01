@@ -30,6 +30,14 @@ const DESC =
 
 export const Route = createFileRoute("/")({
   head: () => ({
+    links: [
+      {
+        rel: "preload",
+        as: "image",
+        href: "/__l5e/assets-v1/acc518fa-15c4-4af2-8a04-6207582a1112/logo.png",
+        fetchPriority: "high",
+      },
+    ],
     meta: [
       { title: TITLE },
       { name: "description", content: DESC },
