@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -8,48 +8,20 @@ interface TestimonialsProps {
 
 export default function Testimonials({ images }: TestimonialsProps) {
   const [index, setIndex] = useState(0);
-  const [loadedImages, setLoadedImages] = useState<Set<number>>(() => new Set());
-  const loadedImagesRef = useRef<Set<number>>(new Set());
-  const pendingIndex = useRef<number | null>(null);
   const total = images.length;
 
   const showImage = (nextIndex: number) => {
-    if (loadedImagesRef.current.has(nextIndex)) {
-      pendingIndex.current = null;
-      setIndex(nextIndex);
-      return;
-    }
-
-    pendingIndex.current = nextIndex;
-  };
-
-  const handleImageLoad = (imageIndex: number) => {
-    loadedImagesRef.current.add(imageIndex);
-    setLoadedImages((current) => {
-      const next = new Set(current);
-      next.add(imageIndex);
-      return next;
-    });
-
-    if (pendingIndex.current === imageIndex) {
-      pendingIndex.current = null;
-      setIndex(imageIndex);
-    }
+    setIndex(nextIndex);
   };
 
   // Autoplay a cada 3000ms com loop infinito
   useEffect(() => {
     if (total <= 1) return;
     const timer = setInterval(() => {
-      setIndex((prev) => {
-        const next = (prev + 1) % total;
-        if (loadedImagesRef.current.has(next)) return next;
-        pendingIndex.current = next;
-        return prev;
-      });
+      setIndex((prev) => (prev + 1) % total);
     }, 3000);
     return () => clearInterval(timer);
-  }, [loadedImages, total]);
+  }, [total]);
 
   const handlePrev = () => {
     showImage((index - 1 + total) % total);
@@ -97,7 +69,6 @@ export default function Testimonials({ images }: TestimonialsProps) {
                   }`}
                   loading="lazy"
                   decoding="async"
-                  onLoad={() => handleImageLoad(imageIndex)}
                 />
               ))}
             </div>
