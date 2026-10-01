@@ -9,11 +9,12 @@ interface TestimonialsProps {
 export default function Testimonials({ images }: TestimonialsProps) {
   const [index, setIndex] = useState(0);
   const [loadedImages, setLoadedImages] = useState<Set<number>>(() => new Set());
+  const loadedImagesRef = useRef<Set<number>>(new Set());
   const pendingIndex = useRef<number | null>(null);
   const total = images.length;
 
   const showImage = (nextIndex: number) => {
-    if (loadedImages.has(nextIndex)) {
+    if (loadedImagesRef.current.has(nextIndex)) {
       pendingIndex.current = null;
       setIndex(nextIndex);
       return;
@@ -23,6 +24,7 @@ export default function Testimonials({ images }: TestimonialsProps) {
   };
 
   const handleImageLoad = (imageIndex: number) => {
+    loadedImagesRef.current.add(imageIndex);
     setLoadedImages((current) => {
       const next = new Set(current);
       next.add(imageIndex);
@@ -41,7 +43,7 @@ export default function Testimonials({ images }: TestimonialsProps) {
     const timer = setInterval(() => {
       setIndex((prev) => {
         const next = (prev + 1) % total;
-        if (loadedImages.has(next)) return next;
+        if (loadedImagesRef.current.has(next)) return next;
         pendingIndex.current = next;
         return prev;
       });
