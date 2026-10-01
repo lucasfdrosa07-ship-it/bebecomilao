@@ -125,6 +125,7 @@ export default function Offer({
                   alt="Mockup Kit Essencial - Bebê Comilão"
                   className="w-full max-w-[200px] sm:max-w-[230px] max-h-48 sm:max-h-52 object-contain rounded-xl drop-shadow-md mx-auto"
                   loading="lazy"
+                   decoding="async"
                 />
               </div>
 
@@ -233,6 +234,7 @@ export default function Offer({
                   alt="Mockup Kit Completo - Bebê Comilão"
                   className="w-full max-w-[200px] sm:max-w-[230px] max-h-48 sm:max-h-52 object-contain rounded-xl drop-shadow-md mx-auto"
                   loading="lazy"
+                   decoding="async"
                 />
               </div>
 

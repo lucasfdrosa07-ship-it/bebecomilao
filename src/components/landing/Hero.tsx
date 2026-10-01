@@ -20,8 +20,12 @@ export default function Hero({ vslUrl }: HeroProps) {
         <img 
           src="/__l5e/assets-v1/acc518fa-15c4-4af2-8a04-6207582a1112/logo.png"
           alt="Bebê Comilão"
+          width="640"
+          height="427"
           className="h-11 sm:h-14 md:h-16 w-auto object-contain"
           loading="eager"
+          decoding="async"
+          fetchPriority="high"
         />
       </motion.div>
 
