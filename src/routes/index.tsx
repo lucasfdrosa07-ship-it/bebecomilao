@@ -13,12 +13,12 @@ const CHECKOUT_ESSENCIAL = "https://pay.cakto.com.br/3bnucyt_1159010";
 const CHECKOUT_COMPLETO = "https://pay.cakto.com.br/hm66pnw_1159018";
 const URL_VSL = "INSERIR_VIDEO_AQUI";
 const depoimentos = [
-  "https://i.ibb.co/fVsDS3q3/Whats-App-Image-2026-09-30-at-20-59-38.jpg",
-  "https://i.ibb.co/0V24gg1h/Whats-App-Image-2026-09-30-at-21-03-29.webp",
-  "https://i.ibb.co/57N4tFF/Whats-App-Image-2026-09-30-at-21-05-35.webp",
-  "https://i.ibb.co/rGRhSsYN/Whats-App-Image-2026-09-30-at-21-09-40.webp",
-  "https://i.ibb.co/0pdsh2bC/Whats-App-Image-2026-09-30-at-21-14-44.webp",
-  "https://i.ibb.co/mF59WXnj/Whats-App-Image-2026-09-30-at-21-20-49.webp",
+  "/__l5e/assets-v1/152cc18e-4183-4637-bb4d-85940dca7392/depo1.jpg",
+  "/__l5e/assets-v1/5b728522-bbdc-4ab0-b0f1-cd23bf937aef/depo2.webp",
+  "/__l5e/assets-v1/2a66cca4-2e97-4a97-b33d-8eb5bfc5cdde/depo3.webp",
+  "/__l5e/assets-v1/f9bea314-ef88-4a55-8117-1041a4a86a59/depo4.webp",
+  "/__l5e/assets-v1/f046f93c-63dc-4f89-86c1-a2f364138f3e/depo5.webp",
+  "/__l5e/assets-v1/c3332524-1449-4042-a4f2-bb8a0886118a/depo6.webp",
 ];
 const imagemBonusEspecial = "INSERIR_IMAGEM_DO_BONUS_AQUI";
 const nomeProfissional = "[NOME DA PROFISSIONAL]";
