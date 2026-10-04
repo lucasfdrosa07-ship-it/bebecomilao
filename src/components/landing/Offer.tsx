@@ -30,7 +30,7 @@ export default function Offer({
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-rose-600"></span>
             </span>
             <span className="text-xs sm:text-sm font-extrabold text-rose-600 animate-pulse tracking-wide uppercase">
-              Oferta válida até hoje às 00:00
+              A oferta expira em minutos, não saia da página!
             </span>
           </div>
 
