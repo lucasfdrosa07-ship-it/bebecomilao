@@ -7,11 +7,13 @@ import Testimonials from "@/components/landing/Testimonials";
 import Offer from "@/components/landing/Offer";
 import FAQ from "@/components/landing/FAQ";
 import FinalCTA from "@/components/landing/FinalCTA";
+import OfferCountdown from "@/components/landing/OfferCountdown";
+import RecipeMarquee from "@/components/landing/RecipeMarquee";
+import heroMockup from "@/assets/hero-mockup.png.asset.json";
 
 // CONFIGURAÇÕES EDITÁVEIS
 const CHECKOUT_ESSENCIAL = "https://pay.cakto.com.br/3bnucyt_1159010";
 const CHECKOUT_COMPLETO = "https://pay.cakto.com.br/hm66pnw_1159018";
-const URL_VSL = "INSERIR_VIDEO_AQUI";
 const depoimentos = [
   "/__l5e/assets-v1/152cc18e-4183-4637-bb4d-85940dca7392/depo1.jpg",
   "/__l5e/assets-v1/5b728522-bbdc-4ab0-b0f1-cd23bf937aef/depo2.webp",
@@ -31,6 +33,7 @@ const DESC =
 export const Route = createFileRoute("/")({
   head: () => ({
     links: [
+      { rel: "preload", as: "image", href: heroMockup.url, fetchPriority: "high" },
       {
         rel: "preload",
         as: "image",
@@ -53,7 +56,9 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#292524] font-sans antialiased overflow-x-hidden selection:bg-[#FB7185]/20 selection:text-[#292524]">
-      <Hero vslUrl={URL_VSL} />
+      <OfferCountdown />
+      <Hero />
+      <RecipeMarquee />
       <ProductExplanation />
       <Features />
       <RecipeDistribution />
