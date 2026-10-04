@@ -155,7 +155,12 @@
 }
 
 .recipe-marquee-track {
-  animation: recipe-marquee-scroll 32s linear infinite;
+  animation: recipe-marquee-scroll 18s linear infinite;
+  will-change: transform;
+}
+
+@media (min-width: 640px) {
+  .recipe-marquee-track { animation-duration: 32s; }
 }
 
 @media (prefers-reduced-motion: reduce) {
