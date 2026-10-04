@@ -33,14 +33,22 @@ export default function OfferCountdown() {
     ? '--:--'
     : `${String(Math.floor(remaining / 60)).padStart(2, '0')}:${String(remaining % 60).padStart(2, '0')}`;
 
+  const expired = remaining === 0;
+
   return (
-    <div className="bg-offer-banner text-offer-banner-foreground px-3 py-2.5 text-center" aria-label={`Oferta limitada, expira em ${time}`}>
+    <div className="bg-offer-banner text-offer-banner-foreground px-3 py-2.5 text-center" aria-label={expired ? 'A oferta expirou! Mas se você continuar na página, ainda pode garantir o desconto.' : `Oferta limitada, expira em ${time}`}>
       <div className="flex items-center justify-center flex-wrap gap-x-2 gap-y-0.5 text-xs sm:text-sm font-bold">
-        <span>OFERTA LIMITADA - EXPIRA EM</span>
-        <span className="inline-flex items-center gap-1.5 tabular-nums">
-          <Clock3 className="w-4 h-4" aria-hidden="true" />
-          <time role="timer" aria-live="off">{time}</time>
-        </span>
+        {expired ? (
+          <span>A OFERTA EXPIROU! Mas se você continuar na página, ainda pode garantir o desconto.</span>
+        ) : (
+          <>
+            <span>OFERTA LIMITADA - EXPIRA EM</span>
+            <span className="inline-flex items-center gap-1.5 tabular-nums">
+              <Clock3 className="w-4 h-4" aria-hidden="true" />
+              <time role="timer" aria-live="off">{time}</time>
+            </span>
+          </>
+        )}
       </div>
     </div>
   );
