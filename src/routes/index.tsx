@@ -17,7 +17,6 @@ const CHECKOUT_COMPLETO = "https://pay.cakto.com.br/hm66pnw_1159018";
 const depoimentos = [
   "/__l5e/assets-v1/152cc18e-4183-4637-bb4d-85940dca7392/depo1.jpg",
   "/__l5e/assets-v1/5b728522-bbdc-4ab0-b0f1-cd23bf937aef/depo2.webp",
-  "/__l5e/assets-v1/2a66cca4-2e97-4a97-b33d-8eb5bfc5cdde/depo3.webp",
   "/__l5e/assets-v1/f9bea314-ef88-4a55-8117-1041a4a86a59/depo4.webp",
   "/__l5e/assets-v1/f046f93c-63dc-4f89-86c1-a2f364138f3e/depo5.webp",
   "/__l5e/assets-v1/c3332524-1449-4042-a4f2-bb8a0886118a/depo6.webp",
