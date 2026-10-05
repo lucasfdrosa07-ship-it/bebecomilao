@@ -1,5 +1,7 @@
 import { motion } from 'motion/react';
 import { Check, Gift, Stethoscope, ShieldCheck, Clock } from 'lucide-react';
+import amandaImg from '@/assets/amanda.png.asset.json';
+import { withTrackingParams } from '@/lib/utm';
 
 interface OfferProps {
   checkoutEssencial: string;
@@ -130,7 +132,7 @@ export default function Offer({
               </div>
 
               <a 
-                href={checkoutEssencial} 
+                href={withTrackingParams(checkoutEssencial)} 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="inline-flex items-center justify-center w-full py-4 px-6 rounded-xl font-bold text-sm sm:text-base text-[#292524] bg-stone-100 hover:bg-stone-200 border border-stone-300 shadow-sm transition-all active:scale-[0.99] text-center"
@@ -239,7 +241,7 @@ export default function Offer({
               </div>
 
               <a 
-                href={checkoutCompleto} 
+                href={withTrackingParams(checkoutCompleto)} 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="inline-flex items-center justify-center w-full py-4 px-6 rounded-xl font-bold text-sm sm:text-base text-white bg-[#FB7185] hover:bg-[#F43F5E] shadow-lg hover:shadow-xl transition-all active:scale-[0.99] text-center"

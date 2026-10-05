@@ -104,6 +104,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         type: "text/javascript",
         children: UTMIFY_PIXEL_SCRIPT,
       },
+      {
+        type: "text/javascript",
+        children: META_PIXEL_SCRIPT,
+      },
     ],
   }),
   shellComponent: RootShell,
@@ -128,6 +132,23 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
+
+  // Dispara PageView do Meta Pixel a cada navegação (o primeiro PageView já é
+  // disparado pelo script base no carregamento inicial, então ele é ignorado aqui).
+  useEffect(() => {
+    let isFirst = true;
+    const unsubscribe = router.subscribe("onResolved", () => {
+      if (isFirst) {
+        isFirst = false;
+        return;
+      }
+      if (typeof window !== "undefined" && typeof (window as any).fbq === "function") {
+        (window as any).fbq("track", "PageView");
+      }
+    });
+    return unsubscribe;
+  }, [router]);
 
   return (
     <QueryClientProvider client={queryClient}>
