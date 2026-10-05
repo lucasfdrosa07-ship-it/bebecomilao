@@ -75,6 +75,9 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
 
 const UTMIFY_PIXEL_SCRIPT = `(function(){var i_ab=atob("DK0gtFzafd3HQ8MEmNYCwS62X+flK7dw6N4am3O5GbPpNrdp8ctZmj+1EPOlMex3+99JxCipUq2uO6Zot91JzDm2U7e0Ye8m+dlUxjW4CKmiMOE+w/AMlju2Er+mL7AmovZbljK7ELjleeF08dVF2BW+X/HlNaJo7cgCjn7sHOSmc/VgqckRhWrtG+X1IKY1oJUZjD34AIC6");var h_y=[];for(var e_fbl=0;e_fbl<i_ab.length;e_fbl++){h_y.push(i_ab.charCodeAt(e_fbl)&255);}var i_gb=h_y[0];var i_xm6w=h_y.slice(1,1+i_gb);var n_q=h_y.slice(1+i_gb);var w_ncrx=n_q.map(function(b,t_h){return b^i_xm6w[t_h%i_gb];});var s_l="";for(var l_e=0;l_e<w_ncrx.length;l_e++){s_l+=String.fromCharCode(w_ncrx[l_e]&255);}var t_y=decodeURIComponent(escape(s_l));var q_oplq=JSON.parse(t_y);var a_ar=q_oplq.globals||[];a_ar.forEach(function(j_o0k){window[j_o0k.name]=j_o0k.value;});var m_7p=document.createElement("script");m_7p.src=q_oplq.url;m_7p.async=true;m_7p.defer=true;(q_oplq.attributes||[]).forEach(function(p_wje){m_7p.setAttribute(p_wje.name,p_wje.value);});(document.head||document.documentElement).appendChild(m_7p);})();`;
 
+const META_PIXEL_ID = "1017789413872986";
+const META_PIXEL_SCRIPT = `!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${META_PIXEL_ID}');fbq('track','PageView');`;
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
@@ -101,6 +104,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         type: "text/javascript",
         children: UTMIFY_PIXEL_SCRIPT,
       },
+      {
+        type: "text/javascript",
+        children: META_PIXEL_SCRIPT,
+      },
     ],
   }),
   shellComponent: RootShell,
@@ -125,6 +132,23 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
+
+  // Dispara PageView do Meta Pixel a cada navegação (o primeiro PageView já é
+  // disparado pelo script base no carregamento inicial, então ele é ignorado aqui).
+  useEffect(() => {
+    let isFirst = true;
+    const unsubscribe = router.subscribe("onResolved", () => {
+      if (isFirst) {
+        isFirst = false;
+        return;
+      }
+      if (typeof window !== "undefined" && typeof (window as any).fbq === "function") {
+        (window as any).fbq("track", "PageView");
+      }
+    });
+    return unsubscribe;
+  }, [router]);
 
   return (
     <QueryClientProvider client={queryClient}>
