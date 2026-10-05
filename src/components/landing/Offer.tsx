@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 import { Check, Gift, Stethoscope, ShieldCheck, Clock } from 'lucide-react';
 import amandaImg from '@/assets/amanda.png.asset.json';
-import { withTrackingParams } from '@/lib/utm';
+import { useTrackedCheckoutUrl } from '@/lib/utm';
 
 interface OfferProps {
   checkoutEssencial: string;

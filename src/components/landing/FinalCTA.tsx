@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { Sparkles, ArrowRight } from 'lucide-react';
-import { withTrackingParams } from '@/lib/utm';
+import { useTrackedCheckoutUrl } from '@/lib/utm';
 
 interface FinalCTAProps {
   checkoutEssencial: string;

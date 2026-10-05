@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 // Repassa os parâmetros de rastreamento da URL atual (UTMs + fbclid) para os links de checkout.
 const TRACKED_PARAMS = [
   "utm_source",
@@ -25,4 +27,14 @@ export function withTrackingParams(url: string): string {
   } catch {
     return url;
   }
+}
+
+// Hook SSR-safe: renderiza a URL pura no servidor e, após a hidratação,
+// atualiza o href com os parâmetros de rastreamento da URL atual.
+export function useTrackedCheckoutUrl(url: string): string {
+  const [tracked, setTracked] = useState(url);
+  useEffect(() => {
+    setTracked(withTrackingParams(url));
+  }, [url]);
+  return tracked;
 }
