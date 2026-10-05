@@ -289,6 +289,56 @@ export default function Offer({
             </p>
           </div>
         </div>
+
+        {/* QUEM SOU EU? */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-8 max-w-2xl mx-auto p-6 sm:p-8 bg-[#FFFDFB] rounded-2xl border border-[#F3E8DF] shadow-sm text-left"
+        >
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5">
+            <img
+              src={amandaImg.url}
+              alt="Amanda, criadora do Bebê Comilão"
+              className="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover shrink-0 border-2 border-[#FCD9CF] shadow-md"
+              loading="lazy"
+              decoding="async"
+            />
+            <div className="text-center sm:text-left">
+              <h3 className="text-lg sm:text-xl font-extrabold text-[#292524] tracking-tight">
+                QUEM SOU EU?
+              </h3>
+              <p className="text-sm font-bold text-[#FB7185] mt-0.5">
+                Por trás do Bebê Comilão
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-5 space-y-4 text-sm sm:text-base text-[#57534E] leading-relaxed">
+            <p>
+              Eu sou a Amanda, e o Bebê Comilão nasceu de uma necessidade que muitas mães conhecem bem: <span className="font-semibold text-[#292524]">"O que eu vou preparar para meu bebê comer hoje?"</span>
+            </p>
+            <p>
+              No começo, percebi que a introdução alimentar podia ser muito mais cansativa do que deveria. Entre pesquisar receitas, pensar em opções diferentes, organizar as compras e tentar oferecer uma alimentação variada, muitas mães acabam se sentindo perdidas, sem saber por onde começar.
+            </p>
+            <p className="font-semibold text-[#292524]">
+              Foi justamente por isso que criei o Bebê Comilão.
+            </p>
+            <p>
+              Reuni em um só lugar centenas de ideias de receitas e materiais práticos para ajudar as mães a terem mais organização na rotina e menos dúvidas na hora de preparar as refeições dos pequenos.
+            </p>
+            <p>
+              E esse projeto não foi pensado apenas com base na minha experiência. O conteúdo foi desenvolvido com apoio profissional de pediatria e nutrição, buscando trazer informações e sugestões de forma mais responsável e alinhada às necessidades dessa fase tão importante.
+            </p>
+            <p>
+              O Bebê Comilão foi criado para a mãe que quer cuidar da alimentação do seu bebê, mas não quer passar horas todos os dias tentando descobrir o que preparar.
+            </p>
+            <p className="font-bold text-[#292524]">
+              Mais ideias. Mais organização. Menos improviso. E uma rotina muito mais leve na hora de alimentar seu bebê.
+            </p>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { Sparkles, ArrowRight } from 'lucide-react';
+import { withTrackingParams } from '@/lib/utm';
 
 interface FinalCTAProps {
   checkoutEssencial: string;
@@ -31,7 +32,7 @@ export default function FinalCTA({ checkoutEssencial, checkoutCompleto }: FinalC
         {/* 2 CTAs Independentes com seus respectivos links */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-xl mx-auto">
           <a
-            href={checkoutEssencial}
+            href={withTrackingParams(checkoutEssencial)}
             target="_blank"
             rel="noopener noreferrer"
             className="w-full sm:w-auto flex-1 inline-flex items-center justify-center px-6 py-4 rounded-xl font-bold text-sm sm:text-base text-[#292524] bg-white hover:bg-stone-50 border border-[#D6D3D1] shadow-sm hover:shadow transition-all active:scale-[0.99]"
@@ -40,7 +41,7 @@ export default function FinalCTA({ checkoutEssencial, checkoutCompleto }: FinalC
           </a>
 
           <a
-            href={checkoutCompleto}
+            href={withTrackingParams(checkoutCompleto)}
             target="_blank"
             rel="noopener noreferrer"
             className="w-full sm:w-auto flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-bold text-sm sm:text-base text-white bg-[#FB7185] hover:bg-[#F43F5E] shadow-lg hover:shadow-xl transition-all active:scale-[0.99]"
