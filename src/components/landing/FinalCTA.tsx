@@ -8,6 +8,8 @@ interface FinalCTAProps {
 }
 
 export default function FinalCTA({ checkoutEssencial, checkoutCompleto }: FinalCTAProps) {
+  const urlEssencial = useTrackedCheckoutUrl(checkoutEssencial);
+  const urlCompleto = useTrackedCheckoutUrl(checkoutCompleto);
   return (
     <section className="py-16 md:py-24 px-4 sm:px-6 bg-gradient-to-b from-[#FFFDF9] to-[#FFF1EE] border-t border-[#F3E8DF]">
       <div className="max-w-3xl mx-auto text-center">
@@ -32,7 +34,7 @@ export default function FinalCTA({ checkoutEssencial, checkoutCompleto }: FinalC
         {/* 2 CTAs Independentes com seus respectivos links */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-xl mx-auto">
           <a
-            href={withTrackingParams(checkoutEssencial)}
+            href={urlEssencial}
             target="_blank"
             rel="noopener noreferrer"
             className="w-full sm:w-auto flex-1 inline-flex items-center justify-center px-6 py-4 rounded-xl font-bold text-sm sm:text-base text-[#292524] bg-white hover:bg-stone-50 border border-[#D6D3D1] shadow-sm hover:shadow transition-all active:scale-[0.99]"
@@ -41,7 +43,7 @@ export default function FinalCTA({ checkoutEssencial, checkoutCompleto }: FinalC
           </a>
 
           <a
-            href={withTrackingParams(checkoutCompleto)}
+            href={urlCompleto}
             target="_blank"
             rel="noopener noreferrer"
             className="w-full sm:w-auto flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-bold text-sm sm:text-base text-white bg-[#FB7185] hover:bg-[#F43F5E] shadow-lg hover:shadow-xl transition-all active:scale-[0.99]"

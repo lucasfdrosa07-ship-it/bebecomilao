@@ -15,6 +15,8 @@ export default function Offer({
   checkoutEssencial, 
   checkoutCompleto, 
 }: OfferProps) {
+  const urlEssencial = useTrackedCheckoutUrl(checkoutEssencial);
+  const urlCompleto = useTrackedCheckoutUrl(checkoutCompleto);
   return (
     <section id="oferta" className="py-16 md:py-24 px-4 sm:px-6 bg-white scroll-mt-6">
       <div className="max-w-5xl mx-auto">
@@ -132,7 +134,7 @@ export default function Offer({
               </div>
 
               <a 
-                href={withTrackingParams(checkoutEssencial)} 
+                href={urlEssencial} 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="inline-flex items-center justify-center w-full py-4 px-6 rounded-xl font-bold text-sm sm:text-base text-[#292524] bg-stone-100 hover:bg-stone-200 border border-stone-300 shadow-sm transition-all active:scale-[0.99] text-center"
@@ -241,7 +243,7 @@ export default function Offer({
               </div>
 
               <a 
-                href={withTrackingParams(checkoutCompleto)} 
+                href={urlCompleto} 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="inline-flex items-center justify-center w-full py-4 px-6 rounded-xl font-bold text-sm sm:text-base text-white bg-[#FB7185] hover:bg-[#F43F5E] shadow-lg hover:shadow-xl transition-all active:scale-[0.99] text-center"
