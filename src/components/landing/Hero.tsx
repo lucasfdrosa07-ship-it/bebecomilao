@@ -1,9 +1,10 @@
 import { motion } from 'motion/react';
+import type { MouseEvent } from 'react';
 import { Sparkles, ShieldCheck, Smartphone } from 'lucide-react';
 import heroMockup from '@/assets/hero-mockup.png.asset.json';
 
 export default function Hero() {
-  const scrollToOffer = (event: React.MouseEvent<HTMLAnchorElement>) => {
+  const scrollToOffer = (event: MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
     const offer = document.getElementById('oferta');
     if (!offer) return;
