@@ -11,6 +11,25 @@ interface OfferProps {
   credenciaisProfissional?: string;
 }
 
+interface BonusCardProps {
+  title: string;
+  description: string;
+  featured?: boolean;
+}
+
+function BonusCard({ title, description, featured = false }: BonusCardProps) {
+  return (
+    <div className={`p-4 rounded-xl border ${featured ? 'bg-[#FFF5F3] border-[#FCD9CF]' : 'bg-[#FAF6F3] border-[#E7E5E4]'}`}>
+      <div className={`flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider mb-2 ${featured ? 'text-[#FB7185]' : 'text-[#57534E]'}`}>
+        <Gift className="w-4 h-4 shrink-0" />
+        <span>BÔNUS INCLUSO</span>
+      </div>
+      <h4 className="font-extrabold text-sm sm:text-base text-[#292524] leading-snug">{title}</h4>
+      <p className="text-xs sm:text-sm text-[#57534E] mt-1 leading-relaxed">{description}</p>
+    </div>
+  );
+}
+
 export default function Offer({ 
   checkoutEssencial, 
   checkoutCompleto, 
@@ -119,6 +138,17 @@ export default function Offer({
                   <span className="font-bold">Garantia de 7 dias</span>
                 </li>
               </ul>
+
+              <div className="space-y-3 mb-5">
+                <BonusCard
+                  title="Cozinha Organizada"
+                  description="Mais praticidade para preparar e manter tudo em ordem!"
+                />
+                <BonusCard
+                  title="Guia de Congelamento e Conservação"
+                  description="Aprenda a organizar, armazenar e identificar alimentos e preparações para facilitar sua rotina e ter tudo mais prático na hora de servir."
+                />
+              </div>
             </div>
 
             <div>
@@ -212,21 +242,17 @@ export default function Offer({
                 </li>
               </ul>
 
-              {/* BÔNUS ESPECIAL */}
-              <div className="p-4 bg-gradient-to-br from-[#FFF5F3] to-[#FEEDE8] border border-[#FCD9CF] rounded-xl mb-4">
-                <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#FB7185] mb-2">
-                  <Gift className="w-4 h-4 text-[#FB7185]" />
-                  <span>BÔNUS ESPECIAL INCLUSO</span>
-                </div>
-
-                <div className="text-left">
-                  <h4 className="font-bold text-sm sm:text-base text-[#292524]">
-                    Guia de Introdução Alimentar na Prática
-                  </h4>
-                  <p className="text-xs sm:text-sm text-[#57534E] mt-1 leading-relaxed">
-                    Um material complementar para ajudar você a entender melhor essa fase e tomar decisões com mais segurança no dia a dia.
-                  </p>
-                </div>
+              <div className="space-y-3 mb-5">
+                <BonusCard
+                  featured
+                  title="Manual da Rotina Alimentar — Do Caos à Organização"
+                  description="Transforme sua rotina alimentar em um sistema simples e prático!"
+                />
+                <BonusCard
+                  featured
+                  title="Banco de Substituições Inteligentes"
+                  description="Faltou algum ingrediente pra receita? Aprenda como adaptar as receitas sem precisar começar tudo de novo."
+                />
               </div>
             </div>
 

@@ -3,6 +3,38 @@ import { Sparkles, ShieldCheck, Smartphone } from 'lucide-react';
 import heroMockup from '@/assets/hero-mockup.png.asset.json';
 
 export default function Hero() {
+  const scrollToOffer = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    const offer = document.getElementById('oferta');
+    if (!offer) return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      offer.scrollIntoView();
+      window.history.replaceState(null, '', '#oferta');
+      return;
+    }
+
+    const start = window.scrollY;
+    const target = offer.getBoundingClientRect().top + start;
+    const distance = target - start;
+    const duration = 1400;
+    const startedAt = performance.now();
+
+    const animateScroll = (now: number) => {
+      const progress = Math.min((now - startedAt) / duration, 1);
+      const eased = progress < 0.5
+        ? 4 * progress * progress * progress
+        : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+      window.scrollTo({ top: start + distance * eased });
+      if (progress < 1) {
+        window.requestAnimationFrame(animateScroll);
+      } else {
+        window.history.replaceState(null, '', '#oferta');
+      }
+    };
+
+    window.requestAnimationFrame(animateScroll);
+  };
 
   return (
     <section className="pt-8 pb-10 md:pt-12 md:pb-12 px-4 sm:px-6 max-w-4xl mx-auto text-center">
@@ -95,6 +127,7 @@ export default function Hero() {
       >
         <a 
           href="#oferta"
+          onClick={scrollToOffer}
           className="inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 sm:py-4.5 bg-[#FB7185] hover:bg-[#F43F5E] text-white font-bold text-base sm:text-lg rounded-xl shadow-lg hover:shadow-xl transition-all active:scale-[0.99] tracking-wide"
         >
           QUERO ORGANIZAR AS REFEIÇÕES DO MEU BEBÊ
