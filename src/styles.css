@@ -151,19 +151,32 @@
 
 @keyframes recipe-marquee-scroll {
   from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  to { transform: translateX(-33.333333%); }
 }
 
 .recipe-marquee-track {
-  animation: recipe-marquee-scroll 18s linear infinite;
-  will-change: transform;
+  will-change: scroll-position;
+}
+
+@media (max-width: 639px) {
+  .recipe-marquee {
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+    touch-action: pan-x pan-y;
+  }
+
+  .recipe-marquee::-webkit-scrollbar { display: none; }
 }
 
 @media (min-width: 640px) {
-  .recipe-marquee-track { animation-duration: 32s; }
+  .recipe-marquee { overflow: hidden; }
+  .recipe-marquee-track {
+    animation: recipe-marquee-scroll 48s linear infinite;
+    will-change: transform;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .recipe-marquee-track { animation: none; }
-  .recipe-marquee { overflow-x: auto; }
 }

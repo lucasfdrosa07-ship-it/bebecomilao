@@ -11,3 +11,4 @@
 
 - Keep the offer countdown deadline in browser storage and derive remaining time from the absolute timestamp; this preserves the countdown across returns without requiring a server or hydration-dependent initial state.
 - Serve uploaded page imagery through Lovable Assets pointer imports; this preserves original files while keeping binaries outside the source repository.
+- Keep the mobile recipe strip circular with three repeated sequences and invisible scroll recentering; this supports continuous touch dragging without an endpoint.
