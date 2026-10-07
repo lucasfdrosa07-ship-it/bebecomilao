@@ -1,13 +1,18 @@
 import { motion } from 'motion/react';
 import { Sunrise, Utensils, Coffee, Moon, Cookie, Sparkles } from 'lucide-react';
+import breakfastImage from '@/assets/cafe-aveia-banana-morango.png.asset.json';
+import lunchImage from '@/assets/almoco-arroz-feijao-frango-legumes.png.asset.json';
+import snackImage from '@/assets/lanche-panqueca-banana-mamao.png.asset.json';
+import dinnerImage from '@/assets/janta-macarrao-frango-abobrinha.png.asset.json';
+import dessertImage from '@/assets/sobremesa-creme-manga-banana.png.asset.json';
 
 export default function RecipeDistribution() {
   const categories = [
-    { name: "Café da manhã", count: 75, icon: Sunrise },
-    { name: "Almoço", count: 85, icon: Utensils },
-    { name: "Café da tarde", count: 65, icon: Coffee },
-    { name: "Janta", count: 90, icon: Moon },
-    { name: "Sobremesas", count: 50, icon: Cookie },
+    { name: "Café da manhã", count: 75, icon: Sunrise, image: breakfastImage.url, alt: "Aveia com banana e morango" },
+    { name: "Almoço", count: 85, icon: Utensils, image: lunchImage.url, alt: "Arroz, feijão, frango e legumes" },
+    { name: "Café da tarde", count: 65, icon: Coffee, image: snackImage.url, alt: "Panqueca de banana e aveia com mamão" },
+    { name: "Janta", count: 90, icon: Moon, image: dinnerImage.url, alt: "Macarrão com frango e abobrinha" },
+    { name: "Sobremesas", count: 50, icon: Cookie, image: dessertImage.url, alt: "Creme de manga com banana" },
   ];
 
   return (
@@ -35,8 +40,17 @@ export default function RecipeDistribution() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.05 }}
-              className="bg-white p-4 sm:p-5 rounded-2xl border border-[#EFE5DC] shadow-xs hover:border-[#FB7185]/40 hover:shadow-sm transition-all flex flex-col items-center text-center"
+              className="bg-white p-2.5 sm:p-3 rounded-2xl border border-[#EFE5DC] shadow-xs hover:border-[#FB7185]/40 hover:shadow-sm transition-all flex flex-col items-center text-center overflow-hidden"
             >
+              <img
+                src={item.image}
+                alt={item.alt}
+                width="1024"
+                height="768"
+                loading="lazy"
+                decoding="async"
+                className="w-full aspect-[4/3] object-cover rounded-xl mb-3"
+              />
               <div className="w-10 h-10 rounded-xl bg-[#FFF1EE] text-[#FB7185] flex items-center justify-center mb-3">
                 <item.icon className="w-5 h-5" />
               </div>

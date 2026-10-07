@@ -11,8 +11,8 @@
 - [x] Permitir arraste circular infinito na faixa de receitas no celular.
 - [x] Adicionar as três novas receitas à faixa pelo CDN.
 - [x] Destacar dois bônus no Kit Essencial e dois no Kit Completo.
-- [ ] Deixar a rolagem do primeiro CTA mais lenta e fluida no celular.
-- [ ] Trocar o mockup principal pela nova arte transparente das 365 receitas.
-- [ ] Atualizar headline, subheadline e texto do primeiro CTA.
-- [ ] Adicionar as cinco imagens ilustrativas aos cards de distribuição.
-- [ ] Enviar as seis novas imagens ao CDN e verificar celular e computador.
+- [x] Deixar a rolagem do primeiro CTA mais lenta e fluida no celular.
+- [x] Trocar o mockup principal pela nova arte transparente das 365 receitas.
+- [x] Atualizar headline, subheadline e texto do primeiro CTA.
+- [x] Adicionar as cinco imagens ilustrativas aos cards de distribuição.
+- [x] Enviar as seis novas imagens ao CDN e verificar celular e computador.

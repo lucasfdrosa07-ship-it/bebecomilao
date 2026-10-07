@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 import type { MouseEvent } from 'react';
 import { Sparkles, ShieldCheck, Smartphone } from 'lucide-react';
-import heroMockup from '@/assets/hero-mockup.png.asset.json';
+import heroMockup from '@/assets/mockup-365-receitas.png.asset.json';
 
 export default function Hero() {
   const scrollToOffer = (event: MouseEvent<HTMLAnchorElement>) => {
@@ -18,7 +18,8 @@ export default function Hero() {
     const start = window.scrollY;
     const target = offer.getBoundingClientRect().top + start;
     const distance = target - start;
-    const duration = 1400;
+    const isMobile = window.matchMedia('(max-width: 767px)').matches;
+    const duration = isMobile ? 3000 : 1600;
     const startedAt = performance.now();
 
     const animateScroll = (now: number) => {
@@ -65,7 +66,7 @@ export default function Hero() {
         transition={{ duration: 0.5 }}
         className="text-2xl sm:text-3xl md:text-5xl font-extrabold text-[#292524] mb-6 md:mb-8 tracking-tight leading-snug md:leading-tight max-w-3xl mx-auto text-balance"
       >
-        +365 receitas com ferro, vitaminas e texturas certas para o seu bebê com mais de 6 meses crescer saudável — e você já saber o que preparar para ele todos os dias.
+        +365 Receitas caseiras para seu bebê de +6 meses crescer saudável na introdução alimentar.
       </motion.h1>
 
       {/* Mockup principal */}
@@ -77,10 +78,10 @@ export default function Hero() {
       >
         <img
           src={heroMockup.url}
-          alt="Mulher ao lado da coleção de livros e guias Bebê Comilão"
-          width="1774"
-          height="887"
-          className="w-full max-w-[560px] h-auto object-contain"
+          alt="Coleção Bebê Comilão com 365 receitas"
+          width="1336"
+          height="760"
+          className="w-full max-w-[600px] h-auto object-contain"
           loading="eager"
           decoding="async"
           fetchPriority="high"
@@ -94,7 +95,7 @@ export default function Hero() {
         transition={{ duration: 0.5, delay: 0.2 }}
         className="text-base sm:text-lg md:text-xl text-[#57534E] mb-5 max-w-2xl mx-auto leading-relaxed"
       >
-        Seu bebê merece mais que papinha pronta e repetição. São 365 receitas organizadas por fase, com apoio de pediatra e nutricionista, para você variar as refeições, parar de decidir tudo do zero e planejar a semana com mais clareza, mesmo com a rotina corrida.
+        365 receitas organizadas por fase para variar as refeições, facilitar sua rotina e apoiar o crescimento saudável do seu bebê.
       </motion.p>
 
       {/* 4. LINHA DE CONFIANÇA */}
@@ -131,7 +132,7 @@ export default function Hero() {
           onClick={scrollToOffer}
           className="inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 sm:py-4.5 bg-[#FB7185] hover:bg-[#F43F5E] text-white font-bold text-base sm:text-lg rounded-xl shadow-lg hover:shadow-xl transition-all active:scale-[0.99] tracking-wide"
         >
-          QUERO ORGANIZAR AS REFEIÇÕES DO MEU BEBÊ
+          QUERO AS 365 RECEITAS
         </a>
       </motion.div>
     </section>
