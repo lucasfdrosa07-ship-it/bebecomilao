@@ -47,7 +47,7 @@ export default function Hero() {
         transition={{ duration: 0.5 }}
         className="text-2xl sm:text-3xl md:text-5xl font-extrabold text-[#292524] mb-6 md:mb-8 tracking-tight leading-snug md:leading-tight max-w-3xl mx-auto text-balance"
       >
-        +365 Receitas caseiras para seu bebê de +6 meses crescer saudável na introdução alimentar.
+        <span className="text-[#C60C59]">+365 Receitas</span> caseiras para seu bebê de +6 meses crescer saudável na introdução alimentar.
       </motion.h1>
 
       {/* Mockup principal */}
