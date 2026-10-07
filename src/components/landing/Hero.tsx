@@ -6,12 +6,12 @@ import heroMockup from '@/assets/mockup-365-receitas.png.asset.json';
 export default function Hero() {
   const scrollToOffer = (event: MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
-    const offer = document.getElementById('oferta');
+    const offer = document.getElementById('kit-completo');
     if (!offer) return;
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       offer.scrollIntoView();
-      window.history.replaceState(null, '', '#oferta');
+      window.history.replaceState(null, '', '#kit-completo');
       return;
     }
 
@@ -31,7 +31,7 @@ export default function Hero() {
       if (progress < 1) {
         window.requestAnimationFrame(animateScroll);
       } else {
-        window.history.replaceState(null, '', '#oferta');
+        window.history.replaceState(null, '', '#kit-completo');
       }
     };
 
@@ -40,25 +40,6 @@ export default function Hero() {
 
   return (
     <section className="pt-8 pb-10 md:pt-12 md:pb-12 px-4 sm:px-6 max-w-4xl mx-auto text-center">
-      {/* LOGOTIPO */}
-      <motion.div 
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-        className="flex justify-center mb-5 md:mb-6"
-      >
-        <img 
-          src="/__l5e/assets-v1/acc518fa-15c4-4af2-8a04-6207582a1112/logo.png"
-          alt="Bebê Comilão"
-          width="640"
-          height="427"
-          className="h-11 sm:h-14 md:h-16 w-auto object-contain"
-          loading="eager"
-          decoding="async"
-          fetchPriority="high"
-        />
-      </motion.div>
-
       {/* 1. HEADLINE */}
       <motion.h1 
         initial={{ opacity: 0, y: 16 }}

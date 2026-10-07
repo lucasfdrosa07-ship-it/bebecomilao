@@ -176,11 +176,12 @@ export default function Offer({
 
           {/* 2. KIT COMPLETO */}
           <motion.div 
+            id="kit-completo"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="p-6 sm:p-8 bg-[#FFFDFB] border-2 border-[#FB7185] rounded-2xl shadow-xl relative flex flex-col justify-between"
+            className="p-6 sm:p-8 bg-[#FFFDFB] border-2 border-[#FB7185] rounded-2xl shadow-xl relative flex flex-col justify-between scroll-mt-8"
           >
             {/* BADGE: MAIS COMPLETO */}
             <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#FB7185] text-white text-xs font-bold uppercase tracking-wider py-1 px-4 rounded-full shadow-md">
