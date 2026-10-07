@@ -9,7 +9,7 @@ import FAQ from "@/components/landing/FAQ";
 import FinalCTA from "@/components/landing/FinalCTA";
 import OfferCountdown from "@/components/landing/OfferCountdown";
 import RecipeMarquee from "@/components/landing/RecipeMarquee";
-import heroMockup from "@/assets/hero-mockup.png.asset.json";
+import heroMockup from "@/assets/mockup-365-receitas.png.asset.json";
 
 // CONFIGURAÇÕES EDITÁVEIS
 const CHECKOUT_ESSENCIAL = "https://pay.cakto.com.br/3bnucyt_1159010";
